@@ -15,10 +15,7 @@ post_memoria = [
     "conteudo": "Conteúdo completo..",
     "autor": "Professor Carlos"
 
-
-
 }
-
                 ]
 
 
@@ -164,5 +161,6 @@ print("\n\n")
 print(50 * "-")
 print("Módulo /del Carregado com sucesso!")
 print(50 * "-")
+
 #    / DEL , GET E POST   #
 
