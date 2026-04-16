@@ -17,17 +17,7 @@
         <h2 class="subtitulo-principal">Fique a vontade para fazer publicações!!!</h2>
     </header>
 
-    <main>
-        <section class="posts">
-            {% for post in posts %}
-            <article class="post">
-                {% for chave, valor in post.items() %}
-                    <p><strong>{{ chave }}:</strong> {{ valor }}</p>
-                {% endfor %}
-            </article>
-            {% endfor %}
-        </section>
-    </main>
+
 
     <button type="button", class="adicionar-post">
 
@@ -47,6 +37,19 @@
         <a href="/del">Delete a sua POSTAGEM!</a>
 
     </button>
+
+
+    <main>
+        <section class="posts">
+            {% for post in posts %}
+            <article class="post">
+                {% for chave, valor in post.items() %}
+                    <p><strong>{{ chave }}:</strong> {{ valor }}</p>
+                {% endfor %}
+            </article>
+            {% endfor %}
+        </section>
+    </main>
 
 
 </body>
