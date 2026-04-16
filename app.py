@@ -27,9 +27,22 @@ async def retornar_lista(request:Request):
 
         request = request,
         name = "index.html",
-        context={"post":post_memoria}
+        context = {"post":post_memoria}
 
     )
+
+@app.get("/create", response_class=HTMLResponse)
+async def postar_post(request:Request):
+
+    return templates.TemplateResponse(
+
+        request = request,
+        name = "create.html",
+        context = {"post":post_memoria}
+
+    )
+
+
 
 @app.post("/create")
 async def postar_post(request:Request):
@@ -52,3 +65,4 @@ async def postar_post(request:Request):
         url="/",
         status_code=303
     )
+
