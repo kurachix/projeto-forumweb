@@ -9,7 +9,47 @@
     <title>Fórum WEB</title>
 
 </head>
+
 <body>
-    
+
+    <header>
+        <h1 class="titulo-principal">Fórum WEB</h1>
+        <h2 class="subtitulo-principal">Fique a vontade para fazer publicações!!!</h2>
+    </header>
+
+    <main>
+        <section class="posts">
+            {% for post in posts %}
+            <article class="post">
+                {% for chave, valor in post.items() %}
+                    <p><strong>{{ chave }}:</strong> {{ valor }}</p>
+                {% endfor %}
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+
+    <button type="button", class="adicionar-post">
+
+        <a href="/create">Adicione a sua POSTAGEM!</a>
+
+    </button>
+
+    <button type="button", class="editar-post">
+
+        <a href="/edit">Edite a sua POSTAGEM!</a>
+
+    </button>
+
+
+    <button type="button", class="deletar-post">
+
+        <a href="/del">Delete a sua POSTAGEM!</a>
+
+    </button>
+
+
 </body>
+
+
 </html>
