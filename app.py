@@ -21,6 +21,10 @@ post_memoria = [
 
                 ]
 
+
+#    /GET geral   #
+
+
 @app.get("/", response_class=HTMLResponse)
 async def retornar_lista(request:Request):
     return templates.TemplateResponse(
@@ -30,6 +34,20 @@ async def retornar_lista(request:Request):
         context = {"post":post_memoria}
 
     )
+
+# verificador
+
+os.system("cls")
+
+print("\n\n")
+print(50 * "-")
+print("Módulo / (get) Carregado com sucesso!")
+print(50 * "-")
+
+#    /GET geral   #
+
+
+#    / CREATE , GET E POST   #
 
 @app.get("/create", response_class=HTMLResponse)
 async def postar_post(request:Request):
@@ -65,4 +83,17 @@ async def postar_post(request:Request):
         url="/",
         status_code=303
     )
+
+
+# verificador
+
+os.system("cls")
+
+print("\n\n")
+print(50 * "-")
+print("Módulo /create Carregado com sucesso!")
+print(50 * "-")
+
+
+#    / CREATE , GET E POST   #
 
