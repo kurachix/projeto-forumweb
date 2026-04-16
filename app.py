@@ -122,7 +122,7 @@ async def post_editar(request:Request):
             val["resumo"] = esperar_formulario["resumo"]
             val["autor"] = esperar_formulario["autor"]
             val["conteudo"] = esperar_formulario["conteudo"]
-            
+
 # verificador
 
 os.system("cls")
@@ -133,4 +133,27 @@ print("Módulo /edit Carregado com sucesso!")
 print(50 * "-")
 
 #    / EDIT , GET E POST   #
+
+#    / DEL , GET E POST   #
+
+@app.get("/delte", response_class=HTMLResponse)
+async def post_deletar(request:Request):
+    return templates.TemplateResponse(
+
+        request=request,
+        name="del.html"
+        context = {"post":post_memoria}
+
+    )
+
+
+# verificador
+
+os.system("cls")
+
+print("\n\n")
+print(50 * "-")
+print("Módulo /del Carregado com sucesso!")
+print(50 * "-")
+#    / DEL , GET E POST   #
 
