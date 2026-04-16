@@ -37,8 +37,6 @@ async def retornar_lista(request:Request):
 
 # verificador
 
-os.system("cls")
-
 print("\n\n")
 print(50 * "-")
 print("Módulo / (get) Carregado com sucesso!")
@@ -125,8 +123,6 @@ async def post_editar(request:Request):
 
 # verificador
 
-os.system("cls")
-
 print("\n\n")
 print(50 * "-")
 print("Módulo /edit Carregado com sucesso!")
@@ -163,8 +159,6 @@ async def post_deletar(request:Request):
         return RedirectResponse(url="/", status_code=303)
 
 # verificador
-
-os.system("cls")
 
 print("\n\n")
 print(50 * "-")
