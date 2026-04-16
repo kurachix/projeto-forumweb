@@ -1,4 +1,4 @@
-fastapi[standart]
+fastapi[standard]
 jinja2
 python-multipart
 
