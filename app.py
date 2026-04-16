@@ -136,7 +136,7 @@ print(50 * "-")
 
 #    / DEL , GET E POST   #
 
-@app.get("/delte", response_class=HTMLResponse)
+@app.get("/del", response_class=HTMLResponse)
 async def post_deletar(request:Request):
     return templates.TemplateResponse(
 
@@ -146,6 +146,21 @@ async def post_deletar(request:Request):
 
     )
 
+@app.post("/del", response_class=HTMLResponse)
+async def post_deletar(request:Request):
+
+    esperar_formulario = await request.form()
+
+    for val in post_memoria:
+        if val["id"] == id:
+            post_memoria.remove(val)
+            
+            #validação
+            print("requisição de del, atendida com sucesso")
+
+            continue
+        
+        return RedirectResponse(url="/", status_code=303)
 
 # verificador
 
