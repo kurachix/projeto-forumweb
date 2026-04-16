@@ -2,7 +2,7 @@ from functions import *
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static", name="static"))
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinjacle2Templates(directory="templates")
 
 post_memoria = [
@@ -23,7 +23,7 @@ post_memoria = [
 
 @app.get("/", response_class=HTMLResponse)
 async def retornar_lista(request:Request):
-    return templates.TemplatesResponse(
+    return templates.TemplateResponse(
 
         request = request,
         name = "index.html",
