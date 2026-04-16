@@ -141,7 +141,7 @@ async def post_deletar(request:Request):
     return templates.TemplateResponse(
 
         request=request,
-        name="del.html"
+        name="del.html",
         context = {"post":post_memoria}
 
     )
