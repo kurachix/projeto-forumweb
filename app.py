@@ -28,7 +28,7 @@ async def retornar_lista(request:Request):
 
         request = request,
         name = "index.html",
-        context = {"post":post_memoria}
+        context = {"posts":post_memoria}
 
     )
 
@@ -51,7 +51,7 @@ async def postar_post(request:Request):
 
         request = request,
         name = "create.html",
-        context = {"post":post_memoria}
+        context = {"posts":post_memoria}
 
     )
 
@@ -101,7 +101,7 @@ async def post_editar(request:Request):
 
         request = request,
         name = "edit.html",
-        context = {"post":post_memoria}
+        context = {"posts":post_memoria}
 
     )
 
@@ -135,7 +135,7 @@ async def post_deletar(request:Request):
 
         request=request,
         name="del.html",
-        context = {"post":post_memoria}
+        context = {"posts":post_memoria}
 
     )
 
