@@ -20,3 +20,13 @@ post_memoria = [
 }
 
                 ]
+
+@app.get("/", response_class=HTMLResponse)
+async def retornar_lista(request:Request):
+    return templates.TemplatesResponse(
+
+        request = request,
+        name = "index.html",
+        context={"post":post_memoria}
+
+    )
