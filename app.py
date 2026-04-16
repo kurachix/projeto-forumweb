@@ -3,7 +3,7 @@ from functions import *
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinjacle2Templates(directory="templates")
+templates = Jinja2Templates(directory="templates")
 
 post_memoria = [
 
@@ -69,11 +69,11 @@ async def postar_post(request:Request):
 
     post_novo = {
 
-        "id": form.get("id"),
-        "titulo": form.get("titulo"),
-        "resumo": form.get("resumo"),
-        "conteudo": form.get("conteudo"),
-        "autor": form.get("autor"),
+        "id": esperar_formulario.get("id"),
+        "titulo": esperar_formulario.get("titulo"),
+        "resumo": esperar_formulario.get("resumo"),
+        "conteudo": esperar_formulario.get("conteudo"),
+        "autor": esperar_formulario.get("autor"),
 
     }
 
@@ -110,7 +110,19 @@ async def post_editar(request:Request):
 
     )
 
+@app.post("/edit", response_class=HTMLResponse)
+async def post_editar(request:Request):
 
+    esperar_formulario = await request.form()
+
+    for val in post_memoria:
+        
+        if val["id"] == id:
+            val["titulo"] = esperar_formulario["titulo"]
+            val["resumo"] = esperar_formulario["resumo"]
+            val["autor"] = esperar_formulario["autor"]
+            val["conteudo"] = esperar_formulario["conteudo"]
+            
 # verificador
 
 os.system("cls")
