@@ -30,3 +30,25 @@ async def retornar_lista(request:Request):
         context={"post":post_memoria}
 
     )
+
+@app.post("/create")
+async def postar_post(request:Request):
+    
+    esperar_formulario = await request.form()
+
+    post_novo = {
+
+        "id": form.get("id"),
+        "titulo": form.get("titulo"),
+        "resumo": form.get("resumo"),
+        "conteudo": form.get("conteudo"),
+        "autor": form.get("autor"),
+
+    }
+
+    post_memoria.append(post_novo)
+
+    return RedirectResponse(
+        url="/",
+        status_code=303
+    )
