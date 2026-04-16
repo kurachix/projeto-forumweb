@@ -97,3 +97,28 @@ print(50 * "-")
 
 #    / CREATE , GET E POST   #
 
+#    / EDIT , GET E POST   #
+
+@app.get("/edit", response_class=HTMLResponse)
+async def post_editar(request:Request):
+
+    return templates.TemplateResponse(
+
+        request = request,
+        name = "edit.html",
+        context = {"post":post_memoria}
+
+    )
+
+
+# verificador
+
+os.system("cls")
+
+print("\n\n")
+print(50 * "-")
+print("Módulo /edit Carregado com sucesso!")
+print(50 * "-")
+
+#    / EDIT , GET E POST   #
+
