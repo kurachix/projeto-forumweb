@@ -32,7 +32,10 @@ body > h2,
 body > h3,
 main,
 form,
-button {
+button,
+.adicionar-post,
+.editar-post,
+.deletar-post {
 	width: min(920px, 100%);
 	margin-left: auto;
 	margin-right: auto;
@@ -96,7 +99,26 @@ button a {
 .adicionar-post,
 .editar-post,
 .deletar-post {
+	display: block;
+	border-radius: 999px;
+	padding: 14px 22px;
+	margin-bottom: 14px;
+	text-decoration: none;
+	color: #ffffff;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	text-align: center;
+	background: linear-gradient(135deg, var(--accent) 0%, #f7984f 100%);
+	box-shadow: var(--shadow);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 	max-width: 420px;
+}
+
+.adicionar-post:hover,
+.editar-post:hover,
+.deletar-post:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 16px 35px rgba(76, 43, 22, 0.2);
 }
 
 form {

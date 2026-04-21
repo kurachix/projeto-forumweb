@@ -32,6 +32,11 @@ async def retornar_lista(request:Request):
 
     )
 
+
+@app.get("/index.html")
+async def index_html_redirect():
+    return RedirectResponse(url="/", status_code=307)
+
 # verificador
 
 print("\n\n")
@@ -54,6 +59,11 @@ async def postar_post(request:Request):
         context = {"posts":post_memoria}
 
     )
+
+
+@app.get("/create.html")
+async def create_html_redirect():
+    return RedirectResponse(url="/create", status_code=307)
 
 
 
@@ -105,6 +115,11 @@ async def post_editar(request:Request):
 
     )
 
+
+@app.get("/edit.html")
+async def edit_html_redirect():
+    return RedirectResponse(url="/edit", status_code=307)
+
 @app.post("/edit", response_class=HTMLResponse)
 async def post_editar(request:Request):
 
@@ -138,6 +153,11 @@ async def post_deletar(request:Request):
         context = {"posts":post_memoria}
 
     )
+
+
+@app.get("/del.html")
+async def del_html_redirect():
+    return RedirectResponse(url="/del", status_code=307)
 
 @app.post("/del", response_class=HTMLResponse)
 async def post_deletar(request:Request):
