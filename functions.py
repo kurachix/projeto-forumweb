@@ -6,4 +6,4 @@ from fastapi import Form
 from fastapi.responses import RedirectResponse
 import os
 
-# pip install -r requirements.txt - para baixar as libs necessárias de uma vez só!#
+# pip install -r requirements.txt - para baixar as libs necessárias de uma vez só! #

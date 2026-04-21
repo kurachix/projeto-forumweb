@@ -144,6 +144,8 @@ async def post_deletar(request:Request):
 
     esperar_formulario = await request.form()
 
+    val = int(esperar_formulario.get("id"))
+
     for val in post_memoria:
         if val["id"] == id:
             post_memoria.remove(val)
