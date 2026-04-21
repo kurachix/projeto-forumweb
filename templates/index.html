@@ -19,30 +19,33 @@
 
 
 
-    <a href="/create" class="adicionar-post">Adicione a sua POSTAGEM!</a>
+    <a href="/templates/create.html" class="adicionar-post">Adicione a sua POSTAGEM!</a>
 
-    <a href="/edit" class="editar-post">Edite a sua POSTAGEM!</a>
+    <a href="/templates/edit.html" class="editar-post">Edite a sua POSTAGEM!</a>
 
 
-    <a href="/del" class="deletar-post">Delete a sua POSTAGEM!</a>
+    <a href="/templates/del.html" class="deletar-post">Delete a sua POSTAGEM!</a>
 
 
     <main>
         <section class="posts">
-            {% for post in posts %}
-            <article class="post">
-                {% for chave, valor in post.items() %}
-                    <p><strong>{{ chave }}:</strong> {{ valor }}</p>
+            {% if posts %}
+                {% for post in posts %}
+                <article class="post">
+                    {% for chave, valor in post.items() %}
+                        <p><strong>{{ chave }}:</strong> {{ valor }}</p>
+                    {% endfor %}
+                </article>
                 {% endfor %}
-            </article>
-            {% endfor %}
+            {% else %}
+                <article class="post">
+                    <p>Nenhum post encontrado.</p>
+                </article>
+            {% endif %}
         </section>
     </main>
 
 
 </body>
-
-<script src="/static/js/script.js"></script>
-
 
 </html>
