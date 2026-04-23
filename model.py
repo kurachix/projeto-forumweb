@@ -25,7 +25,7 @@ def consulta_postagens():
 
     return retorno
 
-def apagar_postagem(postagem_id):
+def apagar_postagem(id):
 
     conn = connection()
     cursor = conn.cursor()
@@ -34,8 +34,24 @@ def apagar_postagem(postagem_id):
             DELETE FROM postagens WHERE id = %s;
             '''
 
-    cursor.execute(query, (postagem_id,))
+    cursor.execute(query, (id,))
 
     conn.commit()
     
+    conn.close()
+
+def realizar_postagem(id, titulo, resumo, conteudo, autor):
+    
+    conn = connection()
+    cursor = conn.cursor()
+
+    query = '''
+        INSERT INTO postagens (id, titulo, resumo, conteudo, autor)
+        VALUES (%s, %s, %s, %s, %s)
+    '''
+
+    valores = (id, titulo, resumo, conteudo, autor)
+
+    cursor.execute(query, valores)
+    conn.commit()
     conn.close()
