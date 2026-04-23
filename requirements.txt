@@ -1,4 +1,4 @@
 fastapi[standard]
 jinja2
 python-multipart
-
+mysql-connector-python
