@@ -52,6 +52,19 @@ def realizar_postagem(id, titulo, resumo, conteudo, autor):
 
     valores = (id, titulo, resumo, conteudo, autor)
 
-    cursor.execute(query, valores)
+    cursor.execute(query, (valores))
+     
     conn.commit()
     conn.close()
+
+
+def editar_postagem(id, titulo, resumo, conteudo, autor):
+
+    conn = connection()
+    cursor = conn.cursor()
+
+    query = '''
+
+
+            '''
+    
