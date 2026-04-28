@@ -90,6 +90,8 @@ async def criar_postagem_submit(request:Request):
         post_novo["autor"],
     )
 
+    return RedirectResponse(url="/", status_code=303)
+
 # verificador
 
 os.system("cls")
@@ -128,6 +130,32 @@ async def edit_template_path(request:Request):
         context = {"posts": posts}
 
     )
+
+
+@app.post("/edit")
+async def editar_postagem_submit(request:Request):
+
+    esperar_formulario = await request.form()
+    id_form = esperar_formulario.get("id")
+    id_alvo = int(id_form)
+    posts = carregar_posts()
+
+    postagem_atual = next((post for post in posts if int(post["id"]) == id_alvo), None)
+
+    novo_titulo = esperar_formulario.get("titulo") or postagem_atual["titulo"]
+    novo_resumo = esperar_formulario.get("resumo") or postagem_atual["resumo"]
+    novo_autor = esperar_formulario.get("autor") or postagem_atual["autor"]
+    novo_conteudo = esperar_formulario.get("conteudo") or postagem_atual["conteudo"]
+
+    editar_postagem(
+        id_alvo,
+        novo_titulo,
+        novo_resumo,
+        novo_conteudo,
+        novo_autor,
+    )
+
+    return RedirectResponse(url="/", status_code=303)
 
 
 # verificador
@@ -175,7 +203,7 @@ async def deletar_postagem_submit(request:Request):
     id_alvo = int(id_form)
     apagar_postagem(id_alvo)
 
-    return RedirectResponse(url="/templates/index.html", status_code=303)
+    return RedirectResponse(url="/", status_code=303)
 
 # verificador
 
