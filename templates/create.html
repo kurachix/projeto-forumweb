@@ -18,12 +18,31 @@
 
 
     <form action="/create" method="post">
+        <input name="id" placeholder="Digite aqui o id"> <br>
         <input name="titulo" placeholder="Digite aqui o título"> <br>
         <input name="resumo" placeholder="Resumo"> <br>
         <input name="conteudo" placeholder="Digite aqui o conteudo"> <br>
         <input name="autor" placeholder="Digite aqui o autor">  <br>
         <button type="submit"> Enviar dados! </button>
     </form>
+
+    <main>
+        <section class="posts">
+            {% if posts %}
+                {% for post in posts %}
+                <article class="post">
+                    {% for chave, valor in post.items() %}
+                        <p><strong>{{ chave }}:</strong> {{ valor }}</p>
+                    {% endfor %}
+                </article>
+                {% endfor %}
+            {% else %}
+                <article class="post">
+                    <p>Nenhum post encontrado.</p>
+                </article>
+            {% endif %}
+        </section>
+    </main>
 
 </body>
 

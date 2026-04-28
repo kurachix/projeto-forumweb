@@ -26,6 +26,24 @@
             <button type="submit"> Enviar dados! </button>
         </form>
 
+    <main>
+        <section class="posts">
+            {% if posts %}
+                {% for post in posts %}
+                <article class="post">
+                    {% for chave, valor in post.items() %}
+                        <p><strong>{{ chave }}:</strong> {{ valor }}</p>
+                    {% endfor %}
+                </article>
+                {% endfor %}
+            {% else %}
+                <article class="post">
+                    <p>Nenhum post encontrado.</p>
+                </article>
+            {% endif %}
+        </section>
+    </main>
+
 
 
 </body>

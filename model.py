@@ -5,75 +5,80 @@ def consulta_postagens():
     conn = connection()
     cursor = conn.cursor(dictionary=True)
 
-    cursor.execute(
-        '''
-        SELECT 
-            *
-        FROM
-            postagens
-        '''
-    )
+    try:
+        cursor.execute(
+            '''
+            SELECT 
+                id,
+                titulo,
+                resumo,
+                conteudo,
+                autor
+            FROM
+                postagens
+            ORDER BY
+                id ASC
+            '''
+        )
 
-    dados = cursor.fetchall()
-
-    conn.close()
-
-    retorno = {}
-
-    for i in dados:
-        retorno[f"{len(retorno)+1}"] = i["nome"]
-
-    return retorno
+        return cursor.fetchall()
+    finally:
+        conn.close()
 
 def apagar_postagem(id):
 
     conn = connection()
     cursor = conn.cursor()
 
-    query = '''
-            DELETE FROM postagens WHERE id = %s;
-            '''
+    try:
+        query = '''
+                DELETE FROM postagens WHERE id = %s;
+                '''
 
-    cursor.execute(query, (id,))
+        cursor.execute(query, (id,))
 
-    conn.commit()
-    
-    conn.close()
+        conn.commit()
+    finally:
+        conn.close()
 
 def realizar_postagem(id, titulo, resumo, conteudo, autor):
     
     conn = connection()
     cursor = conn.cursor()
 
-    query = '''
-        INSERT INTO postagens (id, titulo, resumo, conteudo, autor)
-        VALUES (%s, %s, %s, %s, %s)
-    '''
+    try:
+        query = '''
+            INSERT INTO postagens (id, titulo, resumo, conteudo, autor)
+            VALUES (%s, %s, %s, %s, %s)
+        '''
 
-    valores = (id, titulo, resumo, conteudo, autor)
+        valores = (id, titulo, resumo, conteudo, autor)
 
-    cursor.execute(query, (valores))
+        cursor.execute(query, valores)
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+    finally:
+        conn.close()
 
 
 def editar_postagem(id, titulo, resumo, conteudo, autor):
     conn = connection()
     cursor = conn.cursor()
 
-    query = '''
-        UPDATE postagens
-        SET titulo = %s,
-            resumo = %s,
-            conteudo = %s,
-            autor = %s
-        WHERE id = %s
-    '''
+    try:
+        query = '''
+            UPDATE postagens
+            SET titulo = %s,
+                resumo = %s,
+                conteudo = %s,
+                autor = %s
+            WHERE id = %s
+        '''
 
-    valores = (titulo, resumo, conteudo, autor, id)
+        valores = (titulo, resumo, conteudo, autor, id)
 
-    cursor.execute(query, (valores))
+        cursor.execute(query, valores)
 
-    conn.commit()
-    conn.close()
+        conn.commit()
+    finally:
+        conn.close()
